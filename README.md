@@ -34,5 +34,3 @@ To contribute, please submit a pull request or open an issue.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more information.
-
-Translated with www.DeepL.com/Translator (free version)
