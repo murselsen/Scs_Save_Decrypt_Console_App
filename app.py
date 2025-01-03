@@ -111,16 +111,27 @@ def main():
         os.chdir(_selectGamePath)
 
         if len(sys.argv) < 3:
+            print("❌ | Error: --profileDisplayName argument is required.")
+            logging.error("❌ | Error: --profileDisplayName argument is required.")
+            exit(1)
+        elif (len(sys.argv) < 4):
+            print("❌ | Error: --saveDisplayName argument is required.")
+            logging.error("❌ | Error: --saveDisplayName argument is required."),
+            exit(1)
+        elif len(sys.argv) == 4:
             _selectProfile = sys.argv[2]
-            print("\nSelect Profile: ", _selectProfile)
-            if os.path.isdir(os.path.join(os.getcwd(), _selectProfile)):
-                # decrypt(os.getcwd(), _selectProfile)
-                pass
-            else:
-                logging.warning(
-                    f"⚠️ | Warning: Profile directory '{_selectProfile}' does not exist."
-                )
-      
+            _selectSave = sys.argv[3]
+            print("🎮|Profile :", _selectProfile)
+            print("🎮|Save :", _selectSave)
+        else:
+            print("❌ | Error: Invalid argument count.")
+            logging.error("❌ | Error: Invalid argument count.")
+            exit(1)
+            
+
+
+
+
 
 try:
     main()
