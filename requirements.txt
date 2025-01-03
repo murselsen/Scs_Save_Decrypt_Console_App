@@ -1,6 +1,6 @@
 # ctypes
 logging
-os
+# os
 shutil
 sys
 time
