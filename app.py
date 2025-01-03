@@ -61,11 +61,13 @@ def decrypt(profilesMainDirsPath, profileDisplayName):
     time.sleep(1.0)
     cmdDecrypt = "saveDecrypt.exe profile.sii"
     print("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
-    logging.info("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
+    logging.info(
+        "🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
     time.sleep(1.0)
     os.system(cmdDecrypt)
     print("🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
-    logging.info("🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
+    logging.info(
+        "🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
     os.remove("profileDecrypt.exe")
     os.chdir(profilesMainDirsPath)
 
@@ -100,41 +102,47 @@ def main():
     # Profile
     # Index: 2
     # Path: 666F72756D2E776F746D702E636F6D
-    print("System Arguments:",sys.argv,"\nSystem Arguments Count: ", len(sys.argv))
+    print("System Arguments:", sys.argv,
+          "\nSystem Arguments Count: ", len(sys.argv))
     for index, game in enumerate(gameList):
         print("🎮|App :", gameList.get(game))
     if len(sys.argv) < 2:
-        print("❌ | Error: --gameName argument is required.")
+        print("❌ | Error | ❌ \nℹ️ | Error: --gameName argument is required.")
         logging.error(" | Error: --gameName argument is required.")
-        
-    elif sys.argv[1] == "ets" or sys.argv[1] == "ats":
-        _selectGame = sys.argv[1]
-        _selectGameResult = gameList.get(_selectGame)
-        print("\nSelect Game: ", _selectGameResult)
-        _selectGamePath = os.path.join(myDocumentsPath, _selectGameResult, "profiles")
-        os.chdir(_selectGamePath)
 
-        if len(sys.argv) < 3:
-            print("❌ | Error: --profileDisplayName argument is required.")
-            logging.error(" | Error: --profileDisplayName argument is required.")
-             
-        elif (len(sys.argv) < 4):
-            print("❌ | Error: --saveDisplayName argument is required.")
-            logging.error(" | Error: --saveDisplayName argument is required."),
-             
-        elif len(sys.argv) == 4:
-            _selectProfile = sys.argv[2]
-            _selectSave = sys.argv[3]
-            print("🎮|Profile :", _selectProfile)
-            print("🎮|Save :", _selectSave)
+    else:
+        if sys.argv[1] == "ets" or sys.argv[1] == "ats":
+            _selectGame = sys.argv[1]
+            _selectGameResult = gameList.get(_selectGame)
+            print("\nSelect Game: ", _selectGameResult)
+            _selectGamePath = os.path.join(
+                myDocumentsPath, _selectGameResult, "profiles")
+            os.chdir(_selectGamePath)
+
+            if len(sys.argv) < 3:
+                print("❌ | Error | ❌ \nℹ️ | Error: --profileDisplayName argument is required.")
+                logging.error(
+                    " | Error: --profileDisplayName argument is required.")
+
+            elif (len(sys.argv) < 4):
+                print("❌ | Error | ❌ \nℹ️ | Error: --saveDisplayName argument is required.")
+                logging.error(
+                    " | Error: --saveDisplayName argument is required."),
+
+            elif len(sys.argv) == 4:
+                _selectProfile = sys.argv[2]
+                _selectSave = sys.argv[3]
+                print("🎮|Profile :", _selectProfile)
+                print("🎮|Save :", _selectSave)
+            elif (len(sys.argv) > 4):
+                print("❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
+                logging.error(" | Error: Invalid argument count.")
+            else:
+                pass
         else:
-            print("❌ | Error: Invalid argument count.")
+            print("❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
+            print("⚠️ | Warning | ⚠️ \nℹ️ | Example Arguments Usage: ets/ats 21232312434232 quicksave.")
             logging.error(" | Error: Invalid argument count.")
-            exit(1)
-            
-
-
-
 
 
 try:
