@@ -12,7 +12,7 @@
 
 1. Clone this repository:
     ```sh
-    git clone https://github.com/username/Scs_Save_Decrypt_Console_App.git
+    git clone https://github.com/murselsen/Scs_Save_Decrypt_Console_App.git
     ```
 2. Install the necessary dependencies:
     ```sh
