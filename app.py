@@ -103,7 +103,11 @@ def main():
     print("System Arguments:",sys.argv,"\nSystem Arguments Count: ", len(sys.argv))
     for index, game in enumerate(gameList):
         print("🎮|App :", gameList.get(game))
-    if sys.argv[1] == "ets" or sys.argv[1] == "ats":
+    if len(sys.argv) < 2:
+        print("❌ | Error: --gameName argument is required.")
+        logging.error(" | Error: --gameName argument is required.")
+        
+    elif sys.argv[1] == "ets" or sys.argv[1] == "ats":
         _selectGame = sys.argv[1]
         _selectGameResult = gameList.get(_selectGame)
         print("\nSelect Game: ", _selectGameResult)
@@ -112,12 +116,12 @@ def main():
 
         if len(sys.argv) < 3:
             print("❌ | Error: --profileDisplayName argument is required.")
-            logging.error("❌ | Error: --profileDisplayName argument is required.")
-            exit(1)
+            logging.error(" | Error: --profileDisplayName argument is required.")
+             
         elif (len(sys.argv) < 4):
             print("❌ | Error: --saveDisplayName argument is required.")
-            logging.error("❌ | Error: --saveDisplayName argument is required."),
-            exit(1)
+            logging.error(" | Error: --saveDisplayName argument is required."),
+             
         elif len(sys.argv) == 4:
             _selectProfile = sys.argv[2]
             _selectSave = sys.argv[3]
@@ -125,7 +129,7 @@ def main():
             print("🎮|Save :", _selectSave)
         else:
             print("❌ | Error: Invalid argument count.")
-            logging.error("❌ | Error: Invalid argument count.")
+            logging.error(" | Error: Invalid argument count.")
             exit(1)
             
 
