@@ -41,7 +41,7 @@ print("*****************************************************************")
 
 profileTable = {"ID": [], "Profile": [], "Path": []}
 gameList = {"ets": "Euro Truck Simulator 2", "ats": "American Truck Simulator"}
-SII_exe = os.path.join(os.getcwd(), "profileDecrypt.exe")
+SII_exe = os.path.join(os.getcwd(), "saveDecrypt.exe")
 
 
 def exit(status):
@@ -55,11 +55,11 @@ def decrypt(profilesMainDirsPath, profileDisplayName):
     print("🎮|Profile :", profileDisplayName)
     _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)
     os.chdir(_selectProfilePath)
-    shutil.copyfile(SII_exe, os.getcwd() + "/profileDecrypt.exe")
-    print("🔔 | Status: profileDecrypt.exe has been copied. Please Wait!")
-    logging.info("🔔 | Status: profileDecrypt.exe has been copied. Please Wait!")
+    shutil.copyfile(SII_exe, os.getcwd() + "/saveDecrypt.exe")
+    print("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
+    logging.info("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
     time.sleep(1.0)
-    cmdDecrypt = "SII.exe profile.sii"
+    cmdDecrypt = "saveDecrypt.exe profile.sii"
     print("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
     logging.info("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
     time.sleep(1.0)
@@ -114,7 +114,8 @@ def main():
             _selectProfile = sys.argv[2]
             print("\nSelect Profile: ", _selectProfile)
             if os.path.isdir(os.path.join(os.getcwd(), _selectProfile)):
-                decrypt(os.getcwd(), _selectProfile)
+                # decrypt(os.getcwd(), _selectProfile)
+                pass
             else:
                 logging.warning(
                     f"⚠️ | Warning: Profile directory '{_selectProfile}' does not exist."
@@ -127,7 +128,8 @@ def main():
                 profileDir_path = os.path.join(os.getcwd(), profileDir_displayName)
                 print("Profile\nIndex:", profileDir_index, "\nPath:", profileDir_path)
                 if os.path.isdir(profileDir_path):
-                    decrypt(os.getcwd(), profileDir_displayName)
+                    # decrypt(os.getcwd(), profileDir_displayName)
+                    pass
                 else:
                     logging.warning(
                         f"⚠️ | Warning: Profile directory '{profileDir_displayName}' does not exist."
