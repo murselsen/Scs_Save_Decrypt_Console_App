@@ -100,7 +100,7 @@ def main():
     # Profile
     # Index: 2
     # Path: 666F72756D2E776F746D702E636F6D
-    print(sys.argv)
+    print("System Arguments:",sys.argv,"\nSystem Arguments Count: ", len(sys.argv))
     for index, game in enumerate(gameList):
         print("🎮|App :", gameList.get(game))
     if sys.argv[1] == "ets" or sys.argv[1] == "ats":
@@ -110,7 +110,7 @@ def main():
         _selectGamePath = os.path.join(myDocumentsPath, _selectGameResult, "profiles")
         os.chdir(_selectGamePath)
 
-        if len(sys.argv) > 2:
+        if len(sys.argv) < 3:
             _selectProfile = sys.argv[2]
             print("\nSelect Profile: ", _selectProfile)
             if os.path.isdir(os.path.join(os.getcwd(), _selectProfile)):
@@ -120,21 +120,7 @@ def main():
                 logging.warning(
                     f"⚠️ | Warning: Profile directory '{_selectProfile}' does not exist."
                 )
-        else:
-            print(os.listdir(os.getcwd()))
-            for profileDir_index, profileDir_displayName in enumerate(
-                os.listdir(os.getcwd())
-            ):
-                profileDir_path = os.path.join(os.getcwd(), profileDir_displayName)
-                print("Profile\nIndex:", profileDir_index, "\nPath:", profileDir_path)
-                if os.path.isdir(profileDir_path):
-                    # decrypt(os.getcwd(), profileDir_displayName)
-                    pass
-                else:
-                    logging.warning(
-                        f"⚠️ | Warning: Profile directory '{profileDir_displayName}' does not exist."
-                    )
-
+      
 
 try:
     main()
