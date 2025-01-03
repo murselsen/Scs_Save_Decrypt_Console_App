@@ -23,7 +23,7 @@
 
 1. Run the application:
     ```sh
-    python app.py --gameName --profileName --saveDisplayName
+    python app.py --gameName --profileDisplayName --saveDisplayName
     ```
 2. The decrypted file will be created in the same directory.
 
