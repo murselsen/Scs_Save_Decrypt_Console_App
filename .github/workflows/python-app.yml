@@ -27,5 +27,5 @@ jobs:
 
     - name: Run the Python script
       run: |
-        pip install ctypes
+        python -m pip install ctypes
         python app.py
