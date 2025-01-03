@@ -19,7 +19,7 @@ ctypes.windll.shell32.SHGetFolderPathW(
 )
 myDocumentsPath = buf.value
 print("*****************************************************************")
-print("*        【 Product Name : Scs ETS 2 - Save SII Decrypt 】   *")
+print("*        【 Product Name : Scs ETS 2 - Save SII Decrypt 】      *")
 print("*        【 Author: MQuel 】                                    *")
 print("*        【 Github: github@murselsen 】                         *")
 print("*        【 Discord: 35mursel 】                                *")
@@ -33,6 +33,8 @@ print("*      ets : Euro Truck Simulator 2                             *")
 print("*      ats : American Truck Simulator                           *")
 print("*                                                               *")
 print("*      --profileDisplayName: (required)                         *")
+print("*                                                               *")
+print("*      --saveDisplayName: (required)                            *")
 print("*                                                               *")
 print("*****************************************************************")
 
