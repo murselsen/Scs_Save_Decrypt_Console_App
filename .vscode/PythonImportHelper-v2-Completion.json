@@ -1,0 +1,146 @@
+[
+    {
+        "label": "ctypes.wintypes",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ctypes.wintypes",
+        "description": "ctypes.wintypes",
+        "detail": "ctypes.wintypes",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "exit",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def exit(status):\n    if status:\n        input(\"🚪 | Press any key to exit :\")\n    else:\n        return True\ndef decrypt(profilesMainDirsPath, profileDisplayName):\n    print(\"🎮|Profile :\", profileDisplayName)\n    _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)\n    os.chdir(_selectProfilePath)\n    shutil.copyfile(SII_exe, os.getcwd() + \"/profileDecrypt.exe\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "decrypt",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def decrypt(profilesMainDirsPath, profileDisplayName):\n    print(\"🎮|Profile :\", profileDisplayName)\n    _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)\n    os.chdir(_selectProfilePath)\n    shutil.copyfile(SII_exe, os.getcwd() + \"/profileDecrypt.exe\")\n    print(\"🔔 | Status: profileDecrypt.exe has been copied. Please Wait!\")\n    logging.info(\"🔔 | Status: profileDecrypt.exe has been copied. Please Wait!\")\n    time.sleep(1.0)\n    cmdDecrypt = \"SII.exe profile.sii\"\n    print(\"🔔 | Status: Profile.sii files will be decrypted. Please Wait!\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def main():\n    def cwd():\n        label = \"📂 | Where I am:  |\"\n        labelLength = len(label)\n        cwd = os.getcwd() + \" |\"\n        cwdLength = len(cwd)\n        print(\n            \"\\n+\",\n            \"-\".center(labelLength - 1, \"-\"),\n            \"+\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CSIDL_PERSONAL",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "CSIDL_PERSONAL = 5  # My Documents\nSHGFP_TYPE_CURRENT = 0  # Get current, not default value\nglobal result, appMainPath, buf, myDocuments, gameList, SII_exe, active_profile, active_save, profileTable, saveTable\nbuf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)\nctypes.windll.shell32.SHGetFolderPathW(\n    None, CSIDL_PERSONAL, None, SHGFP_TYPE_CURRENT, buf\n)\nmyDocumentsPath = buf.value\nprint(\"*****************************************************************\")\nprint(\"*        【 Product Name : Scs ETS 2 - Profile SII Decrypt 】   *\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "SHGFP_TYPE_CURRENT",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "SHGFP_TYPE_CURRENT = 0  # Get current, not default value\nglobal result, appMainPath, buf, myDocuments, gameList, SII_exe, active_profile, active_save, profileTable, saveTable\nbuf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)\nctypes.windll.shell32.SHGetFolderPathW(\n    None, CSIDL_PERSONAL, None, SHGFP_TYPE_CURRENT, buf\n)\nmyDocumentsPath = buf.value\nprint(\"*****************************************************************\")\nprint(\"*        【 Product Name : Scs ETS 2 - Profile SII Decrypt 】   *\")\nprint(\"*        【 Author: MQuel 】                                    *\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "buf",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)\nctypes.windll.shell32.SHGetFolderPathW(\n    None, CSIDL_PERSONAL, None, SHGFP_TYPE_CURRENT, buf\n)\nmyDocumentsPath = buf.value\nprint(\"*****************************************************************\")\nprint(\"*        【 Product Name : Scs ETS 2 - Profile SII Decrypt 】   *\")\nprint(\"*        【 Author: MQuel 】                                    *\")\nprint(\"*        【 Github: github@murselsen 】                         *\")\nprint(\"*        【 Discord: 35mursel 】                                *\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "myDocumentsPath",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "myDocumentsPath = buf.value\nprint(\"*****************************************************************\")\nprint(\"*        【 Product Name : Scs ETS 2 - Profile SII Decrypt 】   *\")\nprint(\"*        【 Author: MQuel 】                                    *\")\nprint(\"*        【 Github: github@murselsen 】                         *\")\nprint(\"*        【 Discord: 35mursel 】                                *\")\nprint(\"*        【 Version: v1 】                        b             *\")\nprint(\"*        【 License: 2025 - 2030 】                             *\")\nprint(\"****************************************************************\")\nprint(\"*                                                               *\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "profileTable",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "profileTable = {\"ID\": [], \"Profile\": [], \"Path\": []}\ngameList = {\"ets\": \"Euro Truck Simulator 2\", \"ats\": \"American Truck Simulator\"}\nSII_exe = os.path.join(os.getcwd(), \"profileDecrypt.exe\")\ndef exit(status):\n    if status:\n        input(\"🚪 | Press any key to exit :\")\n    else:\n        return True\ndef decrypt(profilesMainDirsPath, profileDisplayName):\n    print(\"🎮|Profile :\", profileDisplayName)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "gameList",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "gameList = {\"ets\": \"Euro Truck Simulator 2\", \"ats\": \"American Truck Simulator\"}\nSII_exe = os.path.join(os.getcwd(), \"profileDecrypt.exe\")\ndef exit(status):\n    if status:\n        input(\"🚪 | Press any key to exit :\")\n    else:\n        return True\ndef decrypt(profilesMainDirsPath, profileDisplayName):\n    print(\"🎮|Profile :\", profileDisplayName)\n    _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "SII_exe",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "SII_exe = os.path.join(os.getcwd(), \"profileDecrypt.exe\")\ndef exit(status):\n    if status:\n        input(\"🚪 | Press any key to exit :\")\n    else:\n        return True\ndef decrypt(profilesMainDirsPath, profileDisplayName):\n    print(\"🎮|Profile :\", profileDisplayName)\n    _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)\n    os.chdir(_selectProfilePath)",
+        "detail": "app",
+        "documentation": {}
+    }
+]
