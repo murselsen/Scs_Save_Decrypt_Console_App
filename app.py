@@ -53,25 +53,27 @@ def exit(status):
         return True
 
 
-def decrypt(profilesMainDirsPath, profileDisplayName):
-    print("🎮|Profile :", profileDisplayName)
-    _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)
-    os.chdir(_selectProfilePath)
-    shutil.copyfile(SII_exe, os.getcwd() + "/saveDecrypt.exe")
-    print("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
-    logging.info("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
-    time.sleep(1.0)
-    cmdDecrypt = "saveDecrypt.exe profile.sii"
-    print("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
-    logging.info(
-        "🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
-    time.sleep(1.0)
-    os.system(cmdDecrypt)
-    print("🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
-    logging.info(
-        "🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
-    os.remove("profileDecrypt.exe")
-    os.chdir(profilesMainDirsPath)
+def decryptGame(saveMainDirsPath, saveGameSiiPath):
+    # print("🎮|Profile :", profileDisplayName)
+    # _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)
+    # os.chdir(_selectProfilePath)
+    # shutil.copyfile(SII_exe, os.getcwd() + "/saveDecrypt.exe")
+    # print("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
+    # logging.info("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
+    # time.sleep(1.0)
+    # cmdDecrypt = "saveDecrypt.exe profile.sii"
+    # print("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
+    # logging.info(
+    #     "🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
+    # time.sleep(1.0)
+    # os.system(cmdDecrypt)
+    # print("🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
+    # logging.info(
+    #     "🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
+    # os.remove("profileDecrypt.exe")
+    # os.chdir(profilesMainDirsPath)
+    print(saveMainDirsPath)
+    os.chdir(saveMainDirsPath)
 
 
 def main():
@@ -104,12 +106,11 @@ def main():
     # Profile
     # Index: 2
     # Path: 666F72756D2E776F746D702E636F6D
-    print("System Arguments:", sys.argv,
-          "\nSystem Arguments Count: ", len(sys.argv))
+
     for index, game in enumerate(gameList):
         print("🎮|App :", gameList.get(game))
     if len(sys.argv) < 2:
-        print("❌ | Error | ❌ \nℹ️ | Error: --gameName argument is required.")
+        print("\n❌ | Error | ❌ \nℹ️ | Error: --gameName argument is required.")
         logging.error(" | Error: --gameName argument is required.")
 
     else:
@@ -117,39 +118,73 @@ def main():
             _selectGame = sys.argv[1]
             _selectGameResult = gameList.get(_selectGame)
             print("\nSelect Game: ", _selectGameResult)
-            _selectGamePath = os.path.join(
-                myDocumentsPath, _selectGameResult, "profiles")
-            os.chdir(_selectGamePath)
+            for index, game in enumerate(os.listdir(os.path.join(myDocumentsPath, _selectGameResult, "profiles"))):
+                index = index + 1
+                print("🎮| Profile -", index, ":", game)
 
             if len(sys.argv) < 3:
-                print("❌ | Error | ❌ \nℹ️ | Error: --profileDisplayName argument is required.")
+                print(
+                    "\n❌ | Error | ❌ \nℹ️ | Error: --profileDisplayName argument is required.")
                 logging.error(
                     " | Error: --profileDisplayName argument is required.")
 
             elif (len(sys.argv) < 4):
-                print("❌ | Error | ❌ \nℹ️ | Error: --saveDisplayName argument is required.")
+                _selectProfile = sys.argv[2]
+                print("\n👤| Select Profile : ", _selectProfile)
+                for index, save in enumerate(os.listdir(os.path.join(myDocumentsPath, _selectGameResult, "profiles", _selectProfile, "save"))):
+                    index = index + 1
+                    print("🎫| Save -", index, ":", save)
+
+                print(
+                    "\n❌ | Error | ❌ \nℹ️ | Error: --saveDisplayName argument is required.")
                 logging.error(
                     " | Error: --saveDisplayName argument is required."),
 
             elif len(sys.argv) == 4:
                 _selectProfile = sys.argv[2]
                 _selectSave = sys.argv[3]
-                print("🎮|Profile :", _selectProfile)
-                print("🎮|Save :", _selectSave)
+                print("\n👤|Profile :", _selectProfile)
+                print("🎫|Save :", _selectSave)
+                _selectPath = os.path.join(myDocumentsPath, _selectGameResult,
+                                           "profiles", _selectProfile, "save", _selectSave)
+                print("\n📂|Path :", _selectPath)
+                _selectSaveGameSiiPath = os.path.join(_selectSave, "game.sii")
+                _selectSaveInfoSiiPath = os.path.join(_selectSave, "info.sii")
+                # Checking the existence of game.sii
+                if os.path.exists(_selectSaveGameSiiPath):
+                    print("🔔 | Status: game.sii file exists. Decrypting...")
+                    decryptGame(_selectPath, _selectSaveGameSiiPath)
+                else:
+                    print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
+                          "-> ", _selectSave, "game.sii file does not exist.")
+                    logging.error(
+                        " | Error: "+ _selectProfile + " -> "+ _selectSave+" game.sii file does not exist.")
+                
+                # Checking the existence of info.sii
+                if os.path.exists(_selectSaveInfoSiiPath):
+                    print("🔔 | Status: info.sii file exists. Decrypting...")
+                    decryptInfo(_selectPath, _selectSaveInfoSiiPath)
+                else:
+                    print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
+                          "-> ", _selectSave, "info.sii file does not exist.")
+                    logging.error(
+                        " | Error: "+ _selectProfile + " -> "+ _selectSave+" info.sii file does not exist.")
+
             elif (len(sys.argv) > 4):
-                print("❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
+                print("\n❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
                 logging.error(" | Error: Invalid argument count.")
             else:
                 pass
         else:
-            print("❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
-            print("⚠️ | Warning | ⚠️ \nℹ️ | Example Arguments Usage: ets/ats 21232312434232 quicksave.")
+            print("\n❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
+            print(
+                "⚠️ | Warning | ⚠️ \nℹ️ | Example Arguments Usage: ets/ats 21232312434232 quicksave.")
             logging.error(" | Error: Invalid argument count.")
 
 
 try:
     main()
-    input("🚪 | Press any key to exit :")
+    input("\n🚪 | Press any key to exit :")
     # exit(1)
 except Exception as e:
     logging.error("Error: %s", e.args)
