@@ -1,6 +1,6 @@
 # Scs_Save_Decrypt_Console_App
 
-# Scs Save Decrypt Console App, It is a console application developed by Scs Software that allows you to decipher files with the .sii extension. This application allows you to decipher files containing profile details of the games Euro Truck Simulator 2 and American Truck Simulator.
+### Scs Save Decrypt Console App, It is a console application developed by Scs Software that allows you to decipher files with the .sii extension. This application allows you to decipher files containing profile details of the games Euro Truck Simulator 2 and American Truck Simulator.
 
 ## Features
 
