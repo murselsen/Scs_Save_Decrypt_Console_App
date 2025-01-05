@@ -75,12 +75,12 @@ def existsInfoDecryptExe(savePath):
 
 
 def decryptGame():
-    print("📂 | Game - Current Directory:", os.getcwd())
-    print("🔔 | Status: copying gameDecrypt.exe. Please Wait!")
+    print("\n📂 | Game - Current Directory:", os.getcwd())
+    print("\n🔔 | Status: copying gameDecrypt.exe. Please Wait!")
     time.sleep(1.0)
     shutil.copyfile(gameSII_exe, os.getcwd() + "/gameDecrypt.exe")
     existsGameDecryptExe(os.getcwd()) if print(
-        "🔔 | Status: gameDecrypt.exe has been copied.") else False
+        "\n🔔 | Status: gameDecrypt.exe has been copied.") else False
     time.sleep(1.0)
     cmdGaneDecrypt = "gameDecrypt.exe game.sii"
     os.system(cmdGaneDecrypt)
@@ -92,12 +92,12 @@ def decryptGame():
 
 
 def decryptInfo():
-    print("📂 | Info - Current Directory:", os.getcwd()) 
-    print("🔔 | Status: copying infoDecrypt.exe. Please Wait!")
+    print("\n📂 | Info - Current Directory:", os.getcwd()) 
+    print("\n🔔 | Status: copying infoDecrypt.exe. Please Wait!")
     time.sleep(1.0)
     shutil.copyfile(infoSII_exe, os.getcwd() + "/infoDecrypt.exe")
     existsGameDecryptExe(os.getcwd()) if print(
-        "🔔 | Status: infoDecrypt.exe has been copied.") else False
+        "\n🔔 | Status: infoDecrypt.exe has been copied.") else False
     time.sleep(1.0)
     cmdGaneDecrypt = "infoDecrypt.exe info.sii"
     os.system(cmdGaneDecrypt)
@@ -180,7 +180,7 @@ def main():
 
                 # Selected Save
                 _selectSave = sys.argv[3]
-                print("🎫|Save :", _selectSave)
+                print("\n🎫|Save :", _selectSave)
 
                 # We get the path to the Save folder.
                 _selectPath = os.path.join(myDocumentsPath, _selectGameResult,
@@ -189,16 +189,17 @@ def main():
 
                 # We get the path to the Game.sii file.
                 _selectSaveGameSiiPath = os.path.join(_selectPath, "game.sii")
-                print("📂|Game SII Path :", _selectSaveGameSiiPath)
+                print("\nℹ️|Game SII Path :", _selectSaveGameSiiPath)
 
                 # We get the path to the Info.sii file.
                 _selectSaveInfoSiiPath = os.path.join(_selectPath, "info.sii")
-                print("📂|Info SII Path :", _selectSaveInfoSiiPath)
+                print("\nℹ️|Info SII Path :", _selectSaveInfoSiiPath)
 
                 # Checking the existence of game.sii
                 if os.path.exists(_selectSaveGameSiiPath):
-                    print("🔔 | Status: game.sii file exists. Decrypting...")
+                    print("\n🔔 | Status: game.sii file exists. Decrypting...")
                     os.chdir(_selectPath)
+                    time.sleep(3.0)
                     decryptGame()
                 else:
                     print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
@@ -208,8 +209,9 @@ def main():
 
                 # Checking the existence of info.sii
                 if os.path.exists(_selectSaveInfoSiiPath):
-                    print("🔔 | Status: info.sii file exists. Decrypting...")
+                    print("\n🔔 | Status: info.sii file exists. Decrypting...")
                     os.chdir(_selectPath)
+                    time.sleep(3.0)
                     decryptInfo()
                 else:
                     print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
@@ -225,7 +227,7 @@ def main():
         else:
             print("\n❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
             print(
-                "⚠️ | Warning | ⚠️ \nℹ️ | Example Arguments Usage: ets/ats 21232312434232 quicksave.")
+                "\n⚠️ | Warning | ⚠️ \nℹ️ | Example Arguments Usage: ets/ats 21232312434232 quicksave.")
             logging.error(" | Error: Invalid argument count.")
 
 
