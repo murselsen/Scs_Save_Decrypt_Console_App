@@ -43,7 +43,8 @@ print("*****************************************************************")
 
 profileTable = {"ID": [], "Profile": [], "Path": []}
 gameList = {"ets": "Euro Truck Simulator 2", "ats": "American Truck Simulator"}
-SII_exe = os.path.join(os.getcwd(), "saveDecrypt.exe")
+gameSII_exe = os.path.join(os.getcwd(), "gameDecrypt.exe")
+infoSII_exe = os.path.join(os.getcwd(), "infoDecrypt.exe")
 
 
 def exit(status):
@@ -53,30 +54,54 @@ def exit(status):
         return True
 
 
+def existsGameDecryptExe(savePath):
+    gameSiiExePath = os.path.join(savePath, "gameDecrypt.exe")
+    if os.path.exists(gameSiiExePath):
+        logging.error(" | Error: gameDecrypt.exe file exists.")
+        return True
+    else:
+        logging.error(" | Error: gameDecrypt.exe file does not exist.")
+        return False
+
+
+def existsInfoDecryptExe(savePath):
+    infoSiiExePath = os.path.join(savePath, "infoDecrypt.exe")
+    if os.path.exists(infoSiiExePath):
+        logging.error(" | Error: infoDecrypt.exe file exists.")
+        return True
+    else:
+        logging.error(" | Error: infoDecrypt.exe file does not exist.")
+        return False
+
+
 def decryptGame():
-    # print("🎮|Profile :", profileDisplayName)
-    # _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)
-    # os.chdir(_selectProfilePath)
-    # shutil.copyfile(SII_exe, os.getcwd() + "/saveDecrypt.exe")
-    # print("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
-    # logging.info("🔔 | Status: saveDecrypt.exe has been copied. Please Wait!")
-    # time.sleep(1.0)
-    # cmdDecrypt = "saveDecrypt.exe profile.sii"
-    # print("🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
-    # logging.info(
-    #     "🔔 | Status: Profile.sii files will be decrypted. Please Wait!")
-    # time.sleep(1.0)
-    # os.system(cmdDecrypt)
-    # print("🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
-    # logging.info(
-    #     "🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
-    # os.remove("profileDecrypt.exe")
-    # os.chdir(profilesMainDirsPath)
     print("📂 | Game - Current Directory:", os.getcwd())
+    print("🔔 | Status: copying gameDecrypt.exe. Please Wait!")
+    time.sleep(1.0)
+    shutil.copyfile(gameSII_exe, os.getcwd() + "/gameDecrypt.exe")
+    existsGameDecryptExe(os.getcwd()) if print(
+        "🔔 | Status: gameDecrypt.exe has been copied.") else False
+    time.sleep(1.0)
+    cmdGaneDecrypt = "gameDecrypt.exe game.sii"
+    os.system(cmdGaneDecrypt)
+    time.sleep(2.0)
+    os.remove("gameDecrypt.exe")
+    print("\n🔔 | Status: gameDecrypt.exe has been removed. Please Wait!")
 
 
 def decryptInfo():
-    print("📂 | Info - Current Directory:", os.getcwd())
+    print("📂 | Info - Current Directory:", os.getcwd()) 
+    print("🔔 | Status: copying infoDecrypt.exe. Please Wait!")
+    time.sleep(1.0)
+    shutil.copyfile(infoSII_exe, os.getcwd() + "/infoDecrypt.exe")
+    existsGameDecryptExe(os.getcwd()) if print(
+        "🔔 | Status: infoDecrypt.exe has been copied.") else False
+    time.sleep(1.0)
+    cmdGaneDecrypt = "infoDecrypt.exe info.sii"
+    os.system(cmdGaneDecrypt)
+    time.sleep(2.0)
+    os.remove("infoDecrypt.exe")
+    print("\n🔔 | Status: infoDecrypt.exe has been removed. Please Wait!")
 
 
 def main():
