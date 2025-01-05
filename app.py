@@ -53,7 +53,7 @@ def exit(status):
         return True
 
 
-def decryptGame(saveMainDirsPath, saveGameSiiPath):
+def decryptGame():
     # print("🎮|Profile :", profileDisplayName)
     # _selectProfilePath = os.path.join(os.getcwd(), profileDisplayName)
     # os.chdir(_selectProfilePath)
@@ -72,8 +72,11 @@ def decryptGame(saveMainDirsPath, saveGameSiiPath):
     #     "🔔 | Status: profileDecrypt.exe has been removed. Please Wait!")
     # os.remove("profileDecrypt.exe")
     # os.chdir(profilesMainDirsPath)
-    print(saveMainDirsPath)
-    os.chdir(saveMainDirsPath)
+    print("📂 | Game - Current Directory:", os.getcwd())
+
+
+def decryptInfo():
+    print("📂 | Info - Current Directory:", os.getcwd())
 
 
 def main():
@@ -141,34 +144,49 @@ def main():
                     " | Error: --saveDisplayName argument is required."),
 
             elif len(sys.argv) == 4:
+
+                # Selected Profile
                 _selectProfile = sys.argv[2]
-                _selectSave = sys.argv[3]
                 print("\n👤|Profile :", _selectProfile)
+
+                # Selected Save
+                _selectSave = sys.argv[3]
                 print("🎫|Save :", _selectSave)
+
+                # We get the path to the Save folder.
                 _selectPath = os.path.join(myDocumentsPath, _selectGameResult,
                                            "profiles", _selectProfile, "save", _selectSave)
                 print("\n📂|Path :", _selectPath)
-                _selectSaveGameSiiPath = os.path.join(_selectSave, "game.sii")
-                _selectSaveInfoSiiPath = os.path.join(_selectSave, "info.sii")
+
+                # We get the path to the Game.sii file.
+                _selectSaveGameSiiPath = os.path.join(_selectPath, "game.sii")
+                print("📂|Game SII Path :", _selectSaveGameSiiPath)
+
+                # We get the path to the Info.sii file.
+                _selectSaveInfoSiiPath = os.path.join(_selectPath, "info.sii")
+                print("📂|Info SII Path :", _selectSaveInfoSiiPath)
+
                 # Checking the existence of game.sii
                 if os.path.exists(_selectSaveGameSiiPath):
                     print("🔔 | Status: game.sii file exists. Decrypting...")
-                    decryptGame(_selectPath, _selectSaveGameSiiPath)
+                    os.chdir(_selectPath)
+                    decryptGame()
                 else:
                     print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
                           "-> ", _selectSave, "game.sii file does not exist.")
                     logging.error(
-                        " | Error: "+ _selectProfile + " -> "+ _selectSave+" game.sii file does not exist.")
-                
+                        " | Error: " + _selectProfile + " -> " + _selectSave+" game.sii file does not exist.")
+
                 # Checking the existence of info.sii
                 if os.path.exists(_selectSaveInfoSiiPath):
                     print("🔔 | Status: info.sii file exists. Decrypting...")
-                    decryptInfo(_selectPath, _selectSaveInfoSiiPath)
+                    os.chdir(_selectPath)
+                    decryptInfo()
                 else:
                     print("\n❌ | Error | ❌ \nℹ️ | Error:", _selectProfile,
                           "-> ", _selectSave, "info.sii file does not exist.")
                     logging.error(
-                        " | Error: "+ _selectProfile + " -> "+ _selectSave+" info.sii file does not exist.")
+                        " | Error: " + _selectProfile + " -> " + _selectSave+" info.sii file does not exist.")
 
             elif (len(sys.argv) > 4):
                 print("\n❌ | Error | ❌ \nℹ️ | Error: Invalid argument count.")
