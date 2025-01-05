@@ -87,6 +87,8 @@ def decryptGame():
     time.sleep(2.0)
     os.remove("gameDecrypt.exe")
     print("\n🔔 | Status: gameDecrypt.exe has been removed. Please Wait!")
+    time.sleep(1.0)
+    
 
 
 def decryptInfo():
@@ -102,6 +104,8 @@ def decryptInfo():
     time.sleep(2.0)
     os.remove("infoDecrypt.exe")
     print("\n🔔 | Status: infoDecrypt.exe has been removed. Please Wait!")
+    time.sleep(1.0)
+    
 
 
 def main():
